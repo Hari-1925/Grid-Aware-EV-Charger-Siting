@@ -1,0 +1,52 @@
+# Optimal EV Charger Placement - Configuration
+city: "Austin, Texas, USA"
+n_new_stations: 20
+coverage_radius_m: 1500
+h3_resolution: 8
+min_spacing_m: 800
+max_substation_dist_m: 3000
+solver_time_limit_s: 60
+
+feature_weights:
+  population: 0.35
+  poi: 0.25
+  traffic: 0.25
+  existing_chargers_penalty: 0.15
+
+poi_categories:
+  - office
+  - shop
+  - mall
+  - parking
+  - fuel
+  - bus_station
+  - railway_station
+  - university
+  - hospital
+
+road_class_weights:
+  motorway: 5
+  motorway_link: 4
+  trunk: 4
+  trunk_link: 3
+  primary: 3
+  primary_link: 2
+  secondary: 2
+  secondary_link: 1.5
+  tertiary: 1
+  tertiary_link: 0.75
+  residential: 0.5
+  living_street: 0.5
+  unclassified: 0.5
+
+validation:
+  holdout_fraction: 0.20
+  holdout_proximity_m: 500
+  random_baseline_runs: 50
+  sensitivity_weight_delta: 0.20
+
+clustering:
+  top_demand_fraction: 0.30
+  hdbscan_min_cluster_size: 5
+  hdbscan_min_samples: 3
+  kmeans_n_clusters_ratio: 1.5   # multiplier of n_new_stations
